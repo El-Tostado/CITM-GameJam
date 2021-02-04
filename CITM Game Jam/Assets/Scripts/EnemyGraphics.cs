@@ -5,20 +5,60 @@ using Pathfinding;
 public class EnemyGraphics : MonoBehaviour
 {
     public AIPath aiPath;
+    Animator animator;
+
+    public GameObject attackColliderLeft;
+    public GameObject attackColliderRight;
+
+    bool facingRight = false;
+
+    public float attackSpeed = 1.0f;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
+        attackColliderLeft.SetActive(false);
+        attackColliderRight.SetActive(false);
     }
 
     void Update()
     {
-        if (aiPath.desiredVelocity.x >= 0.01f)
+        if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f)
+            animator.SetBool("walking", false);
+        else
         {
-            transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1f);
+            animator.SetBool("walking", true);
+            attackColliderRight.SetActive(false);
+            attackColliderLeft.SetActive(false);
         }
-        else if (aiPath.desiredVelocity.x <= -0.01f)
+
+        if (aiPath.desiredVelocity.x >= 0.0001f)
         {
-            transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1f);
+            GetComponent<SpriteRenderer>().flipX = true;
+            facingRight = true;
         }
+
+        else if (aiPath.desiredVelocity.x <= -0.0001f)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            facingRight = false;
+        }
+
+        if (Vector2.Distance(transform.position, GetComponentInParent<AIDestinationSetter>().target.position) <= aiPath.endReachedDistance)
+            Attack();
+       
+        else
+            animator.SetBool("attack", false);
+    }
+
+    void Attack()
+    {
+        animator.SetBool("attack", true);
+
+        if (facingRight)           
+            attackColliderRight.SetActive(true);
+
+        else
+            attackColliderLeft.SetActive(true);
     }
 }
