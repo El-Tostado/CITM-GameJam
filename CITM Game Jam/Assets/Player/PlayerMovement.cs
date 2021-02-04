@@ -18,10 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
     private GameObject InstancedTarget;
 
+    GameObject[] potions = new GameObject[3];
+
     // Start is called before the first frame update
     void Start()
     {
-        //Cursor.visible = false;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -39,37 +41,17 @@ public class PlayerMovement : MonoBehaviour
     {
         float velX = Input.GetAxisRaw("Horizontal");
         float velY = Input.GetAxisRaw("Vertical");
+        direction = new Vector2(velX, velY).normalized;
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float posX = mousePos.x;
         float posY = mousePos.y;
+        CursorPrefab.transform.position = new Vector2(posX, posY);
 
-        CursorPrefab.transform.position = new Vector3(Mathf.Cos(Mathf.Atan2(posY, posX)) + transform.position.x, posY, 0);
-
-        direction = new Vector2(velX, velY).normalized;
 
         if (Input.GetButtonDown("Fire1"))
         {
-            //if (released)
-            //{
-            //    if (InstancedTarget != null)
-            //    {
-            //        Destroy(InstancedTarget);
-            //    }
-            //    else
-            //    {
-            //        InstancedTarget = Instantiate(TargetPrefab, transform);
-            //        released = false;
-            //    }
-            //}
-
-            //if (InstancedTarget != null)
-            //{
-            //    Vector3 direction = CursorPrefab.transform.position - transform.position;
-            //    direction.Normalize();
-            //    InstancedTarget.transform.position = InstancedTarget.transform.position - transform.position + (direction * aimSpeed * Time.deltaTime);
-            //}
-            InstancedTarget = Instantiate(potion1, transform);
+            InstancedTarget = Instantiate(potion1);
             Transform t = InstancedTarget.GetComponent<PotionMovement>().target;
             t = CursorPrefab.transform;
 
@@ -82,18 +64,31 @@ public class PlayerMovement : MonoBehaviour
                     t.position = new Vector3(hits[i].point.x, hits[i].point.y, t.position.z);
                 }
             }
-
         }
-        Debug.DrawRay(transform.position, mousePos - transform.position);
-        //if (Input.GetButtonUp("Fire1"))
-        //{
-        //    Destroy(InstancedTarget);
-        //    released = true;
-        //}
     }
 
     void Move()
     {
         rb.velocity = new Vector2(direction.x * moveSpeed, direction.y * moveSpeed);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if(collision.gameObject.layer == LayerMask.NameToLayer("Item"))
+        {
+            switch (collision.gameObject.GetComponent<PotionItem>().type)
+            {
+                case (PotionItem.Type.Cure):
+                    break;
+                case (PotionItem.Type.Explosion):
+                    break;
+                case (PotionItem.Type.Sticky):
+                    break;
+
+            };
+
+
+
+        }
     }
 }

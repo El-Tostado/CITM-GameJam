@@ -47,6 +47,8 @@ public class PotionMovement : MonoBehaviour
             float height = Mathf.Lerp(0f, archeight, heightT);
 
             transform.position = Vector2.Lerp(start, end, linearT) + new Vector2(0f, height);
+            transform.localRotation = Quaternion.Euler(0,0,transform.rotation.z + Time.fixedTime * 120);
+            Debug.Log(transform.rotation.z + Time.deltaTime);
         }
         else
         {
