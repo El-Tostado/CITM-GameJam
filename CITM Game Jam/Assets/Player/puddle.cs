@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class puddle : MonoBehaviour
 {
-    public enum Type { Explosion, Sticky, Cure }
 
     float timer;
     public float duration = 10;
-    public Type type;
+    public PotionItem.Type type;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(type == Type.Explosion)
+        if(type == PotionItem.Type.Explosion)
         {
 
         }
-        else if (type == Type.Sticky)
+        else if (type == PotionItem.Type.Sticky)
         {
 
         }
-        else if (type == Type.Cure)
+        else if (type == PotionItem.Type.Cure)
         {
 
         }
@@ -43,15 +42,15 @@ public class puddle : MonoBehaviour
         if (collision.tag != "Enemies")
             return;
 
-        if (type == Type.Explosion)
+        if (type == PotionItem.Type.Explosion)
         {
 
         }
-        else if (type == Type.Sticky)
+        else if (type == PotionItem.Type.Sticky)
         {
 
         }
-        else if (type == Type.Cure)
+        else if (type == PotionItem.Type.Cure)
         {
 
         }
