@@ -17,12 +17,12 @@ public class PlayerMovement : MonoBehaviour
 
     private GameObject InstancedTarget;
 
-    public Texture[] potionTextures = new Texture[4];
-    public Texture empty;
-    public RawImage PotionUI;
+    public Sprite[] potionTextures = new Sprite[4];
+    public Sprite empty;
+    public Image PotionUI;
 
     public int[] potions = new int[2];
-    int currentPotion = 0;
+    public int currentPotion = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
             Transform t = InstancedTarget.GetComponent<PotionMovement>().target;
             t = CursorPrefab.transform;
 
-            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, mousePos - transform.position, (mousePos - transform.position).magnitude);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, CursorPrefab.transform.position - transform.position, (CursorPrefab.transform.position - transform.position).magnitude);
             Debug.Log((mousePos - transform.position).magnitude);
             for (int i = 0; i < hits.Length; ++i)
             {
@@ -85,22 +85,23 @@ public class PlayerMovement : MonoBehaviour
             Debug.DrawRay(transform.position, mousePos - transform.position);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && currentPotion == 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
-            currentPotion--;
+            currentPotion = (currentPotion + 1) % 2;
         }
-        if (Input.GetKeyDown(KeyCode.E) && currentPotion == 0)
+        if (Input.GetAxis("Mouse ScrollWheel") < 0 )
         {
-            currentPotion++;
+            currentPotion = (currentPotion + 1) % 2;
         }
+
 
         if (potions[currentPotion] != -1)
         {
-            PotionUI.texture = potionTextures[potions[currentPotion]];
+            PotionUI.overrideSprite = potionTextures[potions[currentPotion]];
         }
         else
         {
-            PotionUI.texture = empty;
+            PotionUI.overrideSprite = empty;
         }
     }
 
@@ -127,8 +128,8 @@ public class PlayerMovement : MonoBehaviour
                     if(potions[i] == -1)
                     {
                         potions[i] = (int)collision.GetComponent<PotionItem>().type;
-                        exists = true;
                         currentPotion = i;
+                        exists = true;
                         break;
                     }
                 }

@@ -99,9 +99,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06}
+  m_Offset: {x: 0, y: -0.08225757}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.077742435
 --- !u!50 &7404957526643941388
 Rigidbody2D:
   serializedVersion: 4
@@ -141,13 +141,14 @@ MonoBehaviour:
   CursorPrefab: {fileID: 293529850776675609}
   maxRange: 3
   potionTextures:
-  - {fileID: 2800000, guid: 02bf3dac95bd7984da29b2c8e881ad32, type: 3}
-  - {fileID: 2800000, guid: dd22694c15117544a85db634ca191f7a, type: 3}
-  - {fileID: 2800000, guid: 177bc9f5446fe66438dc5591b8e03c6f, type: 3}
-  - {fileID: 2800000, guid: dbe0cc29c55dc4c4297213f974c0130b, type: 3}
-  empty: {fileID: 2800000, guid: 6444e8eb74e6f40e0a966d1e26744d08, type: 3}
+  - {fileID: 9090614961796647107, guid: 02bf3dac95bd7984da29b2c8e881ad32, type: 3}
+  - {fileID: 5836865504383201385, guid: dd22694c15117544a85db634ca191f7a, type: 3}
+  - {fileID: 5702502823725191132, guid: 177bc9f5446fe66438dc5591b8e03c6f, type: 3}
+  - {fileID: 1076045868915142705, guid: dbe0cc29c55dc4c4297213f974c0130b, type: 3}
+  empty: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   PotionUI: {fileID: 0}
   potions: 0000000000000000
+  currentPotion: 0
 --- !u!1001 &4884190376231896876
 PrefabInstance:
   m_ObjectHideFlags: 0
