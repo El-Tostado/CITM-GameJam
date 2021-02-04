@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PotionItem : MonoBehaviour
 {
-    public enum Type { Explosion, Sticky, Cure }
+    public enum Type { Blue, Red, Yellow, Green }
     public Type type;
 
     // Start is called before the first frame update
