@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 91993283488602741}
   - component: {fileID: 91993283488602746}
   - component: {fileID: 91993283488602747}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: taulaferr21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
