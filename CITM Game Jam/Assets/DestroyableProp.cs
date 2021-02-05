@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class DestroyableProp : MonoBehaviour
 {
+    public Sprite broken;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Explosion")
         {
-            Destroy(gameObject);
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().sprite = broken;
         }
     }
 }

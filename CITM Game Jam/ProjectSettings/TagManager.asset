@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Puddle
+  - Explosion
   layers:
   - Default
   - TransparentFX
