@@ -45,11 +45,21 @@ public class Door : MonoBehaviour
         {
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("OpenDoor") && anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
             {
+                if (collider.enabled)
+                {
+                    Bounds bounds = GetComponent<BoxCollider2D>().bounds;
+                    gameObject.layer = 0;
+                    AstarPath.active.UpdateGraphs(bounds);
+                }
                 collider.enabled = false;
             }
         }
-        else {
+        else
+        {
             collider.enabled = true;
+            Bounds bounds = GetComponent<BoxCollider2D>().bounds;
+            gameObject.layer = 12;
+            AstarPath.active.UpdateGraphs(bounds);
         }
     }
 
