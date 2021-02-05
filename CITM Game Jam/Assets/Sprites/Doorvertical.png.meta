@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 94f3ec86018d2044aad5cf89468dc238
+guid: d773898758526b148bc9dedb55d10251
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4815568479674296869
-    second: infected idle_0
+      213: 6194024204467543266
+    second: Doorvertical_0
   - first:
-      213: -9129797046542997228
-    second: infected idle_1
+      213: -2404160244765395740
+    second: Doorvertical_1
   - first:
-      213: -5979836716921201683
-    second: infected idle_2
+      213: 1735155922148214235
+    second: Doorvertical_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,53 +94,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Windows Store Apps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: infected idle_0
+      name: Doorvertical_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
-        height: 32
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,20 +112,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd512715bf9ab2db0800000000000000
-      internalID: -4815568479674296869
+      spriteID: 2ec9575523895f550800000000000000
+      internalID: 6194024204467543266
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: infected idle_1
+      name: Doorvertical_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
-        height: 32
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +133,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 419e46935f17c4180800000000000000
-      internalID: -9129797046542997228
+      spriteID: 4e474a3cef4b2aed0800000000000000
+      internalID: -2404160244765395740
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: infected idle_2
+      name: Doorvertical_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
-        height: 32
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: debd211403a530da0800000000000000
-      internalID: -5979836716921201683
+      spriteID: bd54f813e13841810800000000000000
+      internalID: 1735155922148214235
       vertices: []
       indices: 
       edges: []

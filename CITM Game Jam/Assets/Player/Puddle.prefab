@@ -126,7 +126,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553886820101242953}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -156,12 +156,6 @@ MonoBehaviour:
   combined: 0
   Explosion: {fileID: 630993540623097144, guid: 4b4e5f9aa36905c4688186b5cee5f6a2, type: 3}
   Puddle: {fileID: 1553886820101242953}
-  Textures:
-  - {fileID: 7239554451649923799, guid: feeecbc394996ac489b5610e00aef0e8, type: 3}
-  - {fileID: 6351600517383593962, guid: 092bb07905360204693957a93fda4392, type: 3}
-  - {fileID: 7760632299458796581, guid: 7465e9a0adece274f94ef26878400527, type: 3}
-  - {fileID: 5873012219170116738, guid: c4038bec36caad747a123620d140524d, type: 3}
-  - {fileID: -8923911374754931897, guid: 82bd7de61de615240bc6a7d426094b30, type: 3}
   potionAnimators:
   - {fileID: 9100000, guid: 2a613141a8af7bf4c9ddd78a1ba7c29c, type: 2}
   - {fileID: 9100000, guid: afbcb0281c07c0246a9f5ef4b35ed91c, type: 2}

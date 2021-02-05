@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 91993283488602741}
   - component: {fileID: 91993283488602746}
   - component: {fileID: 91993283488602747}
-  - component: {fileID: 91993283488602744}
   m_Layer: 0
   m_Name: taulaferr21
   m_TagString: Untagged
@@ -72,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: aedb801ae29ec9a4f969fb26631c810e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -110,24 +109,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.60603523, y: 0.20451689}
   m_EdgeRadius: 0
---- !u!50 &91993283488602744
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 91993283488602745}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 7
