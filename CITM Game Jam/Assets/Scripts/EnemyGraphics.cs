@@ -20,12 +20,14 @@ public class EnemyGraphics : MonoBehaviour
 
     bool trapped = false;
     public bool healed = false;
-    
+
     AudioSource audio;
     public AudioClip zombie;
     public AudioClip heal;
 
     public GameObject exlposionEffect;
+
+    GameObject roomManager;
     private void Start()
     {
         audio = GetComponent<AudioSource>();
@@ -37,13 +39,16 @@ public class EnemyGraphics : MonoBehaviour
         audio.clip = zombie;
         audio.loop = true;
         audio.Play();
+
+        roomManager = GameObject.Find("RoomManager");
     }
 
     void Update()
     {
         if (healed) return;
 
-        if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f)
+        if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f &&
+            aiPath.desiredVelocity.y <= 0.01f && aiPath.desiredVelocity.y >= -0.01f)
             animator.SetBool("walking", false);
         else
         {
@@ -72,7 +77,7 @@ public class EnemyGraphics : MonoBehaviour
 
         if (aiDestinationSetter.target != null && Vector2.Distance(transform.position, aiDestinationSetter.target.position) <= aiPath.endReachedDistance)
             Attack();
-       
+
         else
             animator.SetBool("attack", false);
 
@@ -104,7 +109,7 @@ public class EnemyGraphics : MonoBehaviour
     {
         animator.SetBool("attack", true);
 
-        if (facingRight)           
+        if (facingRight)
             attackColliderRight.SetActive(true);
 
         else
@@ -123,7 +128,7 @@ public class EnemyGraphics : MonoBehaviour
         {
             aiPath.canMove = false;
             aiPath.enabled = false;
-            GameObject.Instantiate(exlposionEffect, transform.position, Quaternion.identity); 
+            GameObject.Instantiate(exlposionEffect, transform.position, Quaternion.identity);
             animator.SetBool("healed", true);
             animator.SetBool("walking", false);
             animator.SetBool("attack", false);
@@ -133,6 +138,7 @@ public class EnemyGraphics : MonoBehaviour
             audio.clip = heal;
             audio.loop = false;
             audio.Play();
+            roomManager.GetComponent<RoomManager>().enemiesHealed++;
         }
     }
 
@@ -145,4 +151,3 @@ public class EnemyGraphics : MonoBehaviour
         }
     }
 }
-

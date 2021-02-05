@@ -2,30 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
-    public GameObject NextLevelDoor;
-    bool enemiesKilled = false;
+    public Animator anim;
 
+    public GameObject NextLevelDoor;
+    public GameObject FirstLevelDoor;
+    bool enemiesKilled = false;
+    public int enemiesHealed = 0;
     public int currentlevel;
     public int nextlevel;
     public PlayerMovement Player;
     public EnemyGraphics[] Enemies;
 
     float timer = 0;
+    Text counter;
+
+    float startedTimer = 0;
+    public bool startedLevel = false;
 
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("Player").GetComponent<PlayerMovement>();
         Enemies = GameObject.FindObjectsOfType<EnemyGraphics>();
+        counter = GameObject.Find("Counter").GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (startedTimer >= 1.8 )
+        {
+            startedLevel = true;
+        }
+        else
+        {
+            startedTimer += Time.deltaTime;
+        }
+
         enemiesKilled = true;
+
+        counter.text = enemiesHealed.ToString() + "/" + Enemies.Length.ToString();
 
         foreach (var enemy in Enemies)
         {
@@ -51,12 +71,12 @@ public class RoomManager : MonoBehaviour
 
     public void ResetScene()
     {
-        SceneManager.LoadScene(currentlevel);
+        StartCoroutine(Loadlevel(currentlevel));
     }
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(nextlevel);
+        StartCoroutine(Loadlevel(nextlevel));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -65,6 +85,15 @@ public class RoomManager : MonoBehaviour
         {
             NextLevel();
         }
+    }
+
+    IEnumerator Loadlevel(int level)
+    {
+        anim.SetBool("transitionEND", true);
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene(level);
     }
 
 }

@@ -9,6 +9,8 @@ TagManager:
   - Explosion
   - Enemy
   - HealExplosion
+  - ScreenShake
+  - Alarm
   layers:
   - Default
   - TransparentFX
