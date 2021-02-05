@@ -66,6 +66,11 @@ public class RoomManager : MonoBehaviour
         {
             ResetScene();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetScene();
+        }
     }
 
     public void ResetScene()
@@ -82,6 +87,7 @@ public class RoomManager : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
+            startedLevel = false;
             NextLevel();
         }
     }

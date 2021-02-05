@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4496d0560ca92b647897844e52ce233f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 4382753248819640056}
   NextLevelDoor: {fileID: 0}
   enemiesHealed: 0
   currentlevel: 6
