@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 508318631279200006}
   m_Layer: 0
   m_Name: AttackColliderRight
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 508318632326613192}
   m_Layer: 0
   m_Name: AttackColliderLeft
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 508318632440930796}
   m_Layer: 0
   m_Name: EnemyGraphics
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -380,7 +380,7 @@ MonoBehaviour:
   attackSpeed: 1
   visionRange: 2.5
   player: {fileID: 0}
-  exlposionEffect: {fileID: 0}
+  exlposionEffect: {fileID: 552821936630059267, guid: 14fc8fa786de10b449cd453153506f43, type: 3}
 --- !u!95 &508318632440930795
 Animator:
   serializedVersion: 3
