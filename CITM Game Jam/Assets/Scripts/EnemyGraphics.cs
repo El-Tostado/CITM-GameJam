@@ -22,6 +22,8 @@ public class EnemyGraphics : MonoBehaviour
     public bool healed = false;
 
     public GameObject exlposionEffect;
+
+    GameObject roomManager;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -29,6 +31,8 @@ public class EnemyGraphics : MonoBehaviour
         attackColliderRight.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        roomManager = GameObject.Find("RoomManager");
     }
 
     void Update()
@@ -121,6 +125,7 @@ public class EnemyGraphics : MonoBehaviour
             animator.SetBool("attack", false);
 
             healed = true;
+            roomManager.GetComponent<RoomManager>().enemiesHealed++;
         }
     }
 
