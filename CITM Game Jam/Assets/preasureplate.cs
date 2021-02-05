@@ -24,10 +24,13 @@ public class preasureplate : MonoBehaviour
             {
                 if(door != null)
                 {
-                    door.GetComponent<Door>().Open();
-                    Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
-                    gameObject.layer = 0;
-                    AstarPath.active.UpdateGraphs(bounds);
+                    if (!door.GetComponent<Door>().opened)
+                    {
+                        door.GetComponent<Door>().Open();
+                    }
+                    //Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
+                    //gameObject.layer = 0;
+                    //AstarPath.active.UpdateGraphs(bounds);
                 }
             }
         }
@@ -37,10 +40,13 @@ public class preasureplate : MonoBehaviour
             {
                 if (door != null)
                 {
-                    door.GetComponent<Door>().Close();
-                    Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
-                    gameObject.layer = 12;
-                    AstarPath.active.UpdateGraphs(bounds);
+                    if (door.GetComponent<Door>().opened)
+                    {
+                        door.GetComponent<Door>().Close();
+                    }
+                    //Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
+                    //gameObject.layer = 12;
+                    //AstarPath.active.UpdateGraphs(bounds);
                 }
             }
         }

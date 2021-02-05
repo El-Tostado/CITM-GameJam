@@ -144,8 +144,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opened: 0
-  open: {fileID: 0}
-  close: {fileID: 0}
+  open: {fileID: 8300000, guid: 74244dc5e89c1124c9d4a6b1146888e4, type: 3}
+  close: {fileID: 8300000, guid: f7dc93a0cae5753439cb198d532f25e4, type: 3}
 --- !u!82 &7014234335708660335
 AudioSource:
   m_ObjectHideFlags: 0
