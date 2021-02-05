@@ -145,7 +145,7 @@ MonoBehaviour:
   - {fileID: 5836865504383201385, guid: dd22694c15117544a85db634ca191f7a, type: 3}
   - {fileID: 5702502823725191132, guid: 177bc9f5446fe66438dc5591b8e03c6f, type: 3}
   - {fileID: 1076045868915142705, guid: dbe0cc29c55dc4c4297213f974c0130b, type: 3}
-  empty: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
+  empty: {fileID: 0}
   PotionUI: {fileID: 0}
   potions: 0000000000000000
   currentPotion: 0

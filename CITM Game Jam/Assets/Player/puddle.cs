@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class puddle : MonoBehaviour
 {
-
+    public enum Type { Blue, Red, Yellow, Green, Purple }
     float timer;
     public float duration = 10;
-    public PotionItem.Type type;
+    public Type type;
+    public bool combined = false;
+
+    public GameObject Explosion;
+    public GameObject Puddle;
+
+    public RuntimeAnimatorController[] potionAnimators = new RuntimeAnimatorController[5];
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("");
     }
 
     // Update is called once per frame
@@ -26,22 +32,47 @@ public class puddle : MonoBehaviour
         }
     }
 
+    public void SetType(int _type)
+    {
+        type = (Type)_type;
+
+        GetComponent<Animator>().runtimeAnimatorController = potionAnimators[(int)type];
+        Debug.Log((int)type + "-" + type);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Enemies")
-            return;
+        if (combined == false)
+        {
+            if (collision.tag == "Puddle")
+            {
+                Type _type = collision.GetComponent<puddle>().type;
+                Vector3 cp = (collision.transform.position + transform.position) / 2;
 
-        //if (type == PotionItem.Type.Explosion)
-        //{
-
-        //}
-        //else if (type == PotionItem.Type.Sticky)
-        //{
-
-        //}
-        //else if (type == PotionItem.Type.Cure)
-        //{
-
-        //}
+                if (_type == Type.Yellow && type == Type.Red)
+                {
+                    //EXPLODE
+                    Instantiate(Explosion, new Vector3(cp.x,cp.y,-10), Quaternion.identity);
+                    Destroy(gameObject);
+                    Destroy(collision.gameObject);
+                }
+                else if(_type == Type.Red && type == Type.Blue)
+                {
+                    GameObject go = Instantiate(Puddle, cp, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    go.GetComponent<puddle>().combined = true;
+                    Destroy(gameObject);
+                    Destroy(collision.gameObject);
+                    go.GetComponent<puddle>().SetType((int)Type.Purple);
+                }
+                else if (_type == Type.Yellow && type == Type.Blue)
+                {
+                    GameObject go = Instantiate(Puddle, cp, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    go.GetComponent<puddle>().combined = true;
+                    Destroy(gameObject);
+                    Destroy(collision.gameObject);
+                    go.GetComponent<puddle>().SetType((int)Type.Green);
+                }
+            }
+        }
     }
 }

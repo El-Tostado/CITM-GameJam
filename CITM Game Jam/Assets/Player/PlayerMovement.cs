@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite[] potionTextures = new Sprite[4];
     public Sprite empty;
     public Image PotionUI;
+    public Image PotionUI2;
 
     public int[] potions = new int[2];
     public int currentPotion = 0;
@@ -66,23 +67,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && potions[currentPotion] != -1)
         {
-            potions[currentPotion] = -1;
-            currentPotion = (currentPotion + 1) % 2;
             InstancedTarget = Instantiate(potion1,transform.position, Quaternion.identity);
+            InstancedTarget.GetComponent<PotionMovement>().SetType((PotionItem.Type)potions[currentPotion]);
             Transform t = InstancedTarget.GetComponent<PotionMovement>().target;
             t = CursorPrefab.transform;
 
+            potions[currentPotion] = -1;
+            currentPotion = (currentPotion + 1) % 2;
+
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, CursorPrefab.transform.position - transform.position, (CursorPrefab.transform.position - transform.position).magnitude);
-            Debug.Log((mousePos - transform.position).magnitude);
+            
             for (int i = 0; i < hits.Length; ++i)
             {
-                Debug.Log(hits[i].collider.name);
                 if (hits[i].collider.transform.gameObject.layer == 8)
                 {
                     t.position = new Vector3(hits[i].point.x, hits[i].point.y, t.position.z);
                 }
             }
-            Debug.DrawRay(transform.position, mousePos - transform.position);
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
@@ -98,10 +99,21 @@ public class PlayerMovement : MonoBehaviour
         if (potions[currentPotion] != -1)
         {
             PotionUI.overrideSprite = potionTextures[potions[currentPotion]];
+            PotionUI.color = Color.white;
         }
         else
         {
-            PotionUI.overrideSprite = empty;
+            PotionUI.color = Color.clear;
+        }
+
+        if (potions[(currentPotion + 1) % 2] != -1)
+        {
+            PotionUI2.overrideSprite = potionTextures[potions[(currentPotion + 1) % 2]];
+            PotionUI2.color = Color.white;
+        }
+        else
+        {
+            PotionUI2.color = Color.clear;
         }
     }
 
