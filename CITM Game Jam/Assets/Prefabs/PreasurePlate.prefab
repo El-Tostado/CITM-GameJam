@@ -144,3 +144,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Doors:
   - {fileID: 0}
+  ON: {fileID: 8300000, guid: f9016ccba8a7fb643847e7ce09908534, type: 3}
+  OFF: {fileID: 8300000, guid: c8a82c89550a5a342bba4b43af0e0ad4, type: 3}

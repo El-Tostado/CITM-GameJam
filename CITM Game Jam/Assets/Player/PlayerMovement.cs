@@ -52,7 +52,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!roomManager.startedLevel)
         {
+            PotionUI.enabled = false;
+            PotionUI2.enabled = false;
             return;
+        }
+        else
+        {
+            PotionUI.enabled = true;
+            PotionUI2.enabled = true;
         }
 
         processInputs();
