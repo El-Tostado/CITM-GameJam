@@ -9,6 +9,7 @@ public class RoomManager : MonoBehaviour
     public Animator anim;
 
     public GameObject NextLevelDoor;
+    public GameObject FirstLevelDoor;
     bool enemiesKilled = false;
     public int enemiesHealed = 0;
     public int currentlevel;
@@ -16,7 +17,11 @@ public class RoomManager : MonoBehaviour
     public PlayerMovement Player;
     public EnemyGraphics[] Enemies;
 
-    Text counter; 
+    float timer = 0;
+    Text counter;
+
+    float startedTimer = 0;
+    public bool startedLevel = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +34,15 @@ public class RoomManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (startedTimer >= 1.8 )
+        {
+            startedLevel = true;
+        }
+        else
+        {
+            startedTimer += Time.deltaTime;
+        }
+
         enemiesKilled = true;
 
         counter.text = enemiesHealed.ToString() + "/" + Enemies.Length.ToString();
@@ -43,11 +57,13 @@ public class RoomManager : MonoBehaviour
 
         if (enemiesKilled)
         {
-            if (NextLevelDoor != null)
+            timer += Time.deltaTime;
+
+            if (NextLevelDoor != null && !NextLevelDoor.GetComponent<Door>().opened && timer >= 1)
                 NextLevelDoor.GetComponent<Door>().Open();
         }
 
-        if (Player.isDead && Player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (Player.isDead && Player.animator.GetCurrentAnimatorStateInfo(0).IsName("death") && Player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             ResetScene();
         }

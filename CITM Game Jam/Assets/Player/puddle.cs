@@ -15,10 +15,25 @@ public class puddle : MonoBehaviour
 
     public RuntimeAnimatorController[] potionAnimators = new RuntimeAnimatorController[5];
 
+    AudioSource audio;
+    public AudioClip sticky;
+    public AudioClip sonar;
+
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("");
+        audio = GetComponent<AudioSource>();
+
+        if (type == Type.Green)
+        {
+            audio.clip = sticky;
+            audio.Play();
+        }
+        if (type == Type.Purple)
+        {
+            audio.clip = sonar;
+            audio.Play();
+        }
     }
 
     // Update is called once per frame
@@ -37,7 +52,6 @@ public class puddle : MonoBehaviour
         type = (Type)_type;
 
         GetComponent<Animator>().runtimeAnimatorController = potionAnimators[(int)type];
-        Debug.Log((int)type + "-" + type);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
