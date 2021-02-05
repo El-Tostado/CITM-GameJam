@@ -95,7 +95,7 @@ MonoBehaviour:
   maxAcceleration: -2.5
   rotationSpeed: 360
   slowdownDistance: 5
-  pickNextWaypointDist: 1
+  pickNextWaypointDist: 0.1
   endReachedDistance: 0.2
   alwaysDrawGizmos: 0
   slowWhenNotFacingTarget: 1
@@ -380,6 +380,7 @@ MonoBehaviour:
   attackSpeed: 1
   visionRange: 2.5
   player: {fileID: 0}
+  healed: 0
   exlposionEffect: {fileID: 552821936630059267, guid: 14fc8fa786de10b449cd453153506f43, type: 3}
 --- !u!95 &508318632440930795
 Animator:

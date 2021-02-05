@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isDead = false;
 
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
 
         PotionUI = GameObject.Find("PotionUI").GetComponent<Image>();
         PotionUI2 = GameObject.Find("PotionUI2").GetComponent<Image>();
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -62,6 +66,14 @@ public class PlayerMovement : MonoBehaviour
         else if( velX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
+        }
+        if (velX == 0 && velY == 0)
+        {
+            animator.SetBool("walking", false);
+        }
+        else
+        {
+            animator.SetBool("walking", true);
         }
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
