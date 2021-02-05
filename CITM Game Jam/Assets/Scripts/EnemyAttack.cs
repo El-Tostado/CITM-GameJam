@@ -6,18 +6,21 @@ public class EnemyAttack : MonoBehaviour
 {
     float timer = 0.0f;
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerMovement>().animator.SetBool("dead", true);
+            collision.gameObject.GetComponent<PlayerMovement>().isDead = true;
+        }
+    }
+
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player" && timer < transform.parent.GetChild(0).GetComponent<EnemyGraphics>().attackSpeed)
+        if (collision.gameObject.tag == "Player")
         {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            if (collision.gameObject.tag == "Player")
-            {
-                collision.gameObject.GetComponent<PlayerMovement>().isDead = true;
-            }
+            collision.gameObject.GetComponent<PlayerMovement>().animator.SetBool("dead", true);
+            collision.gameObject.GetComponent<PlayerMovement>().isDead = true;
         }
     }
 }

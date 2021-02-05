@@ -39,7 +39,7 @@ public class RoomManager : MonoBehaviour
                 NextLevelDoor.GetComponent<Door>().Open();
         }
 
-        if (Player.isDead)
+        if (Player.isDead && Player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             ResetScene();
         }

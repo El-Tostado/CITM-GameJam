@@ -1,19 +1,25 @@
 fileFormatVersion: 2
-guid: b74c78078f4c52b4d863d677395bf5bb
+guid: 4f1257ab9220fad4f9c56bee91ebdce4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4387270062282934839
-    second: ProtaIdle_0
+      213: 5071944843602051729
+    second: death animation_0
   - first:
-      213: -5859189218805858473
-    second: ProtaIdle_1
+      213: -8759876547420730979
+    second: death animation_1
   - first:
-      213: -7010482117175939512
-    second: ProtaIdle_2
+      213: 1051868895968210818
+    second: death animation_2
   - first:
-      213: -7078933686912867333
-    second: ProtaIdle_3
+      213: 1371885119996797685
+    second: death animation_3
+  - first:
+      213: 6066847024541858739
+    second: death animation_4
+  - first:
+      213: 8459620854429288580
+    second: death animation_5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -137,12 +143,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ProtaIdle_0
+      name: death animation_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 32
+        width: 48
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,19 +157,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c57be38f194d13c0800000000000000
-      internalID: -4387270062282934839
+      spriteID: 192464386fa236640800000000000000
+      internalID: 5071944843602051729
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ProtaIdle_1
+      name: death animation_1
       rect:
         serializedVersion: 2
-        x: 32
+        x: 48
         y: 0
-        width: 32
+        width: 48
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -172,40 +178,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 75f3745e27affaea0800000000000000
-      internalID: -5859189218805858473
+      spriteID: d9946b221baae6680800000000000000
+      internalID: -8759876547420730979
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ProtaIdle_2
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 84eef7558a3c5be90800000000000000
-      internalID: -7010482117175939512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ProtaIdle_3
+      name: death animation_2
       rect:
         serializedVersion: 2
         x: 96
         y: 0
-        width: 32
+        width: 48
         height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -214,8 +199,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf3230b415392cd90800000000000000
-      internalID: -7078933686912867333
+      spriteID: 28fa776103df89e00800000000000000
+      internalID: 1051868895968210818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death animation_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f2ad028f3ae90310800000000000000
+      internalID: 1371885119996797685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death animation_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbf37ca935c13450800000000000000
+      internalID: 6066847024541858739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: death animation_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4888eba985c966570800000000000000
+      internalID: 8459620854429288580
       vertices: []
       indices: 
       edges: []
