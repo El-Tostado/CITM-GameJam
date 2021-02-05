@@ -13,6 +13,8 @@ public class RoomManager : MonoBehaviour
     public PlayerMovement Player;
     public EnemyGraphics[] Enemies;
 
+    float timer = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,11 +37,13 @@ public class RoomManager : MonoBehaviour
 
         if (enemiesKilled)
         {
-            if (NextLevelDoor != null)
+            timer += Time.deltaTime;
+
+            if (NextLevelDoor != null && !NextLevelDoor.GetComponent<Door>().opened && timer >= 1)
                 NextLevelDoor.GetComponent<Door>().Open();
         }
 
-        if (Player.isDead && Player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+        if (Player.isDead && Player.animator.GetCurrentAnimatorStateInfo(0).IsName("death") && Player.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             ResetScene();
         }

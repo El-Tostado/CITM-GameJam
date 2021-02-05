@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private GameObject InstancedTarget;
 
     public Sprite[] potionTextures = new Sprite[4];
-    public Sprite empty;
+
     public Image PotionUI;
     public Image PotionUI2;
 
@@ -29,6 +29,11 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator animator;
 
+    AudioSource audio;
+    public AudioClip walk;
+    public AudioClip grab;
+    public AudioClip die;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +43,9 @@ public class PlayerMovement : MonoBehaviour
 
         PotionUI = GameObject.Find("PotionUI").GetComponent<Image>();
         PotionUI2 = GameObject.Find("PotionUI2").GetComponent<Image>();
-
+        audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
+        audio.clip = walk;
     }
 
     // Update is called once per frame
@@ -55,25 +61,50 @@ public class PlayerMovement : MonoBehaviour
 
     void processInputs()
     {
+        if (isDead)
+        {
+            if (audio.clip != die)
+            {
+                audio.clip = die;
+                audio.loop = false;
+                audio.Play();
+            }
+            return;
+        }
+
         float velX = Input.GetAxisRaw("Horizontal");
         float velY = Input.GetAxisRaw("Vertical");
         direction = new Vector2(velX, velY).normalized;
 
-        if( velX > 0)
+        if (velX > 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
-        else if( velX < 0)
+        else if (velX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }
+
         if (velX == 0 && velY == 0)
         {
             animator.SetBool("walking", false);
+
+            if (audio.clip == walk)
+            {
+                audio.loop = false;
+                audio.Stop();
+            }
         }
         else
         {
             animator.SetBool("walking", true);
+
+            if (audio.clip != walk || !audio.isPlaying)
+            {
+                audio.clip = walk;
+                audio.loop = true;
+                audio.Play();
+            }
         }
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -84,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && potions[currentPotion] != -1)
         {
-            InstancedTarget = Instantiate(potion1,transform.position, Quaternion.identity);
+            InstancedTarget = Instantiate(potion1, transform.position, Quaternion.identity);
             InstancedTarget.GetComponent<PotionMovement>().SetType((PotionItem.Type)potions[currentPotion]);
             PotionMovement t = InstancedTarget.GetComponent<PotionMovement>();
             t.targetPos = CursorPrefab.transform.position;
@@ -94,7 +125,7 @@ public class PlayerMovement : MonoBehaviour
             currentPotion = (currentPotion + 1) % 2;
 
             RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, CursorPrefab.transform.position - transform.position, (CursorPrefab.transform.position - transform.position).magnitude);
-            
+
             for (int i = 0; i < hits.Length; ++i)
             {
                 if (hits[i].collider.transform.gameObject.layer == 8)
@@ -104,11 +135,11 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 || Input.GetKeyDown(KeyCode.Alpha1))
         {
             currentPotion = (currentPotion + 1) % 2;
         }
-        if (Input.GetAxis("Mouse ScrollWheel") < 0 )
+        if (Input.GetAxis("Mouse ScrollWheel") < 0 || Input.GetKeyDown(KeyCode.Alpha2))
         {
             currentPotion = (currentPotion + 1) % 2;
         }
@@ -160,11 +191,12 @@ public class PlayerMovement : MonoBehaviour
                         potions[i] = (int)collision.GetComponent<PotionItem>().type;
                         currentPotion = i;
                         exists = true;
+
                         break;
                     }
                 }
                 if (exists)
-                    Destroy(collision.gameObject);
+                    collision.gameObject.GetComponent<PotionItem>().Destroy();
             }
         }
     }

@@ -20,15 +20,23 @@ public class EnemyGraphics : MonoBehaviour
 
     bool trapped = false;
     public bool healed = false;
+    
+    AudioSource audio;
+    public AudioClip zombie;
+    public AudioClip heal;
 
     public GameObject exlposionEffect;
     private void Start()
     {
+        audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         attackColliderLeft.SetActive(false);
         attackColliderRight.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
+        audio.clip = zombie;
+        audio.loop = true;
+        audio.Play();
     }
 
     void Update()
@@ -121,6 +129,10 @@ public class EnemyGraphics : MonoBehaviour
             animator.SetBool("attack", false);
 
             healed = true;
+
+            audio.clip = heal;
+            audio.loop = false;
+            audio.Play();
         }
     }
 
