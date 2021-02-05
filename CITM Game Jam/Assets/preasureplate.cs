@@ -7,6 +7,15 @@ public class preasureplate : MonoBehaviour
     public List<GameObject> Doors;
     bool active;
 
+    AudioSource audio;
+    public AudioClip ON;
+    public AudioClip OFF;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (active)
@@ -33,6 +42,8 @@ public class preasureplate : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("active", true); 
             active = true;
+            audio.clip = ON;
+            audio.Play();
         }
     }
 
@@ -42,6 +53,8 @@ public class preasureplate : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("active", false);
             active = false;
+            audio.clip = OFF;
+            audio.Play();
         }
     }
 }
