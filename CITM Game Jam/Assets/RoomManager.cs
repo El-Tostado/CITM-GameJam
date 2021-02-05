@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class RoomManager : MonoBehaviour
 {
@@ -9,23 +10,28 @@ public class RoomManager : MonoBehaviour
 
     public GameObject NextLevelDoor;
     bool enemiesKilled = false;
-
+    public int enemiesHealed = 0;
     public int currentlevel;
     public int nextlevel;
     public PlayerMovement Player;
     public EnemyGraphics[] Enemies;
+
+    Text counter; 
 
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("Player").GetComponent<PlayerMovement>();
         Enemies = GameObject.FindObjectsOfType<EnemyGraphics>();
+        counter = GameObject.Find("Counter").GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
         enemiesKilled = true;
+
+        counter.text = enemiesHealed.ToString() + "/" + Enemies.Length.ToString();
 
         foreach (var enemy in Enemies)
         {
