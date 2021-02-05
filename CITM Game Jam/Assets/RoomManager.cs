@@ -9,7 +9,6 @@ public class RoomManager : MonoBehaviour
     public Animator anim;
 
     public GameObject NextLevelDoor;
-    public GameObject FirstLevelDoor;
     bool enemiesKilled = false;
     public int enemiesHealed = 0;
     public int currentlevel;
