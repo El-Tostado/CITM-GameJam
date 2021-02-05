@@ -5,6 +5,7 @@ using Pathfinding;
 public class EnemyGraphics : MonoBehaviour
 {
     public AIPath aiPath;
+    public AIDestinationSetter aiDestinationSetter;
     Animator animator;
 
     public GameObject attackColliderLeft;
@@ -13,8 +14,12 @@ public class EnemyGraphics : MonoBehaviour
     bool facingRight = false;
 
     public float attackSpeed = 1.0f;
-    public float visionRange = 40f;
+    public float visionRange = 20;
 
+    public GameObject player;
+
+    bool trapped = false;
+    bool healed = false;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -24,13 +29,18 @@ public class EnemyGraphics : MonoBehaviour
 
     void Update()
     {
+        if (healed) return;
+
         if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f)
             animator.SetBool("walking", false);
         else
         {
-            animator.SetBool("walking", true);
-            attackColliderRight.SetActive(false);
-            attackColliderLeft.SetActive(false);
+            if (!trapped)
+            {
+                animator.SetBool("walking", true);
+                attackColliderRight.SetActive(false);
+                attackColliderLeft.SetActive(false);
+            }
         }
 
         if (aiPath.desiredVelocity.x >= 0.0001f)
@@ -45,14 +55,35 @@ public class EnemyGraphics : MonoBehaviour
             facingRight = false;
         }
 
-        if (Vector2.Distance(transform.position, GetComponentInParent<AIDestinationSetter>().target.position) <= aiPath.endReachedDistance)
+        if (aiDestinationSetter.target == null)
+            aiDestinationSetter.target = player.transform;
+
+        if (aiDestinationSetter.target != null && Vector2.Distance(transform.position, aiDestinationSetter.target.position) <= aiPath.endReachedDistance)
             Attack();
        
         else
             animator.SetBool("attack", false);
 
-        if (Vector2.Distance(transform.position, GetComponentInParent<AIDestinationSetter>().target.position) <= visionRange)
+        if (aiDestinationSetter.target != null && Vector2.Distance(transform.position, aiDestinationSetter.target.position) <= visionRange)
+        {
             aiPath.enabled = true;
+            GameObject[] potions = GameObject.FindGameObjectsWithTag("Puddle");
+            if (potions.Length > 0)
+            {
+                foreach(GameObject potion in potions)
+                {
+                    if (potion != null && potion.GetComponent<puddle>().type == puddle.Type.Purple)
+                    {
+                        aiDestinationSetter.target = potion.transform;
+                        break;
+                    }
+                    else
+                        aiDestinationSetter.target = player.transform;
+                }
+            }
+            else
+                aiDestinationSetter.target = player.transform;
+        }
         else
             aiPath.enabled = false;
     }
@@ -67,4 +98,34 @@ public class EnemyGraphics : MonoBehaviour
         else
             attackColliderLeft.SetActive(true);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Puddle" && collision.gameObject.GetComponent<puddle>().type == puddle.Type.Green)
+        {
+            aiPath.canMove = false;
+            animator.SetBool("walking", false);
+            trapped = true;
+        }
+        if (collision.gameObject.tag == "HealExplosion")
+        {
+            aiPath.canMove = false;
+            aiPath.enabled = false;
+            animator.SetBool("healed", true);
+            animator.SetBool("walking", false);
+            animator.SetBool("attack", false);
+
+            healed = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Puddle" && collision.gameObject.GetComponent<puddle>().type == puddle.Type.Green)
+        {
+            aiPath.canMove = true;
+            trapped = false;
+        }
+    }
 }
+

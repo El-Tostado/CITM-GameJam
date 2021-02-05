@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Wall
   - Puddle
+  - Explosion
+  - Enemy
+  - HealExplosion
   layers:
   - Default
   - TransparentFX

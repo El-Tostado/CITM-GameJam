@@ -8,6 +8,9 @@ public class DestroyableProp : MonoBehaviour
     {
         if(collision.gameObject.tag == "Explosion")
         {
+            Bounds bounds = gameObject.GetComponent<BoxCollider2D>().bounds;
+            gameObject.layer = 0;
+            AstarPath.active.UpdateGraphs(bounds);
             Destroy(gameObject);
         }
     }
