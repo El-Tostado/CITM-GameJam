@@ -22,6 +22,8 @@ public class EnemyGraphics : MonoBehaviour
     public bool healed = false;
 
     public GameObject exlposionEffect;
+
+    GameObject roomManager;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -29,13 +31,16 @@ public class EnemyGraphics : MonoBehaviour
         attackColliderRight.SetActive(false);
 
         player = GameObject.FindGameObjectWithTag("Player");
+
+        roomManager = GameObject.Find("RoomManager");
     }
 
     void Update()
     {
         if (healed) return;
 
-        if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f)
+        if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f &&
+            aiPath.desiredVelocity.y <= 0.01f && aiPath.desiredVelocity.y >= -0.01f)
             animator.SetBool("walking", false);
         else
         {
@@ -121,6 +126,7 @@ public class EnemyGraphics : MonoBehaviour
             animator.SetBool("attack", false);
 
             healed = true;
+            roomManager.GetComponent<RoomManager>().enemiesHealed++;
         }
     }
 
