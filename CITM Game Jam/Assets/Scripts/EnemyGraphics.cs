@@ -20,6 +20,8 @@ public class EnemyGraphics : MonoBehaviour
 
     bool trapped = false;
     bool healed = false;
+
+    public GameObject exlposionEffect;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -111,6 +113,7 @@ public class EnemyGraphics : MonoBehaviour
         {
             aiPath.canMove = false;
             aiPath.enabled = false;
+            GameObject.Instantiate(exlposionEffect, transform.position, Quaternion.identity); 
             animator.SetBool("healed", true);
             animator.SetBool("walking", false);
             animator.SetBool("attack", false);
