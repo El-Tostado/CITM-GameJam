@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2269055588639806559}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 8
-  m_Sprite: {fileID: 21300000, guid: d2c26b6e86aa6e74997d1c40a7e8d492, type: 3}
+  m_Sprite: {fileID: 1076045868915142705, guid: dbe0cc29c55dc4c4297213f974c0130b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -151,7 +151,13 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   target: {fileID: 0}
+  type: 0
   archeight: 3.92
   speed: 67.59
   duration: 0
+  potionTextures:
+  - {fileID: 9090614961796647107, guid: 02bf3dac95bd7984da29b2c8e881ad32, type: 3}
+  - {fileID: 5836865504383201385, guid: dd22694c15117544a85db634ca191f7a, type: 3}
+  - {fileID: 5702502823725191132, guid: 177bc9f5446fe66438dc5591b8e03c6f, type: 3}
+  - {fileID: 1076045868915142705, guid: dbe0cc29c55dc4c4297213f974c0130b, type: 3}
   puddle: {fileID: 1553886820101242953, guid: 167defec43a4f9a458586c87b67383b6, type: 3}
