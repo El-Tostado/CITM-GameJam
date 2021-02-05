@@ -71,13 +71,11 @@ public class RoomManager : MonoBehaviour
 
     public void ResetScene()
     {
-        startedLevel = false;
         StartCoroutine(Loadlevel(currentlevel));
     }
 
     public void NextLevel()
     {
-        startedLevel = false;
         StartCoroutine(Loadlevel(nextlevel));
     }
 
