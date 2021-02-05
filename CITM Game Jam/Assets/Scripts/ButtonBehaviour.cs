@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ButtonBehaviour : MonoBehaviour
 {
-
+    public Animator anim;
     public GameObject Play;
     public GameObject Title;
     public GameObject Credits;
@@ -21,7 +21,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnPlay()
     {
-        SceneManager.LoadScene("level1");
+        StartCoroutine(LoadlevelStart());
     }
 
     public void OnCredits()
@@ -47,6 +47,15 @@ public class ButtonBehaviour : MonoBehaviour
     public void OnExit()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadlevelStart()
+    {
+        anim.SetBool("transitionEND", true);
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene("level1");
     }
 
 }
