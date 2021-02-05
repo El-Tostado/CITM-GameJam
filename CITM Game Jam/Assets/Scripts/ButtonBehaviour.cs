@@ -13,6 +13,8 @@ public class ButtonBehaviour : MonoBehaviour
     public GameObject Back;
     public GameObject CreditsImage;
 
+    public AudioSource audio;
+
     public void Start()
     {
         GameObject.Find("Back").SetActive(false);
@@ -21,11 +23,13 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnPlay()
     {
+        audio.Play();
         StartCoroutine(LoadlevelStart());
     }
 
     public void OnCredits()
     {
+        audio.Play();
         Title.SetActive(false);
         Play.SetActive(false);
        Credits.SetActive(false);
@@ -36,6 +40,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnBack()
     {
+        audio.Play();
         Title.SetActive(true);
         Play.SetActive(true);
         Credits.SetActive(true);
@@ -46,6 +51,7 @@ public class ButtonBehaviour : MonoBehaviour
 
     public void OnExit()
     {
+        audio.Play();
         Application.Quit();
     }
 
