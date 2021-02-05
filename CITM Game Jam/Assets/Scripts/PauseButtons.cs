@@ -31,12 +31,14 @@ public class PauseButtons : MonoBehaviour
                 UnPauseGame();
                 CloseESCMenu();
                 IsPaused = false;
+                Cursor.visible = false;
             }
             else if (!IsPaused)
             {
                 PauseGame();
                 OpenESCMenu();
                 IsPaused = true;
+                Cursor.visible = true;
             }
         }
     }

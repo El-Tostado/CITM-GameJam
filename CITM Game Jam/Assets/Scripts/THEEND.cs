@@ -10,6 +10,11 @@ public class THEEND : MonoBehaviour
 
     public AudioSource audio;
 
+    private void Awake()
+    {
+        Cursor.visible = true;
+    }
+
     public void OnMenu()
     {
         audio.Play();
