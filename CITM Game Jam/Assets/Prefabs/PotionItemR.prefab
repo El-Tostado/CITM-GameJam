@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
-  pick: {fileID: 0}
+  pick: {fileID: 8300000, guid: 5bf507531aa1d544598513924073d558, type: 3}
 --- !u!58 &183527804046304618
 CircleCollider2D:
   m_ObjectHideFlags: 0
