@@ -12,18 +12,7 @@ public class puddle : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(type == PotionItem.Type.Explosion)
-        {
-
-        }
-        else if (type == PotionItem.Type.Sticky)
-        {
-
-        }
-        else if (type == PotionItem.Type.Cure)
-        {
-
-        }
+        
     }
 
     // Update is called once per frame
@@ -42,17 +31,17 @@ public class puddle : MonoBehaviour
         if (collision.tag != "Enemies")
             return;
 
-        if (type == PotionItem.Type.Explosion)
-        {
+        //if (type == PotionItem.Type.Explosion)
+        //{
 
-        }
-        else if (type == PotionItem.Type.Sticky)
-        {
+        //}
+        //else if (type == PotionItem.Type.Sticky)
+        //{
 
-        }
-        else if (type == PotionItem.Type.Cure)
-        {
+        //}
+        //else if (type == PotionItem.Type.Cure)
+        //{
 
-        }
+        //}
     }
 }
