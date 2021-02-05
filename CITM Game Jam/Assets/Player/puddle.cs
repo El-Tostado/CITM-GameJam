@@ -13,7 +13,7 @@ public class puddle : MonoBehaviour
     public GameObject Explosion;
     public GameObject Puddle;
 
-    public Sprite[] Textures = new Sprite[5];
+    public RuntimeAnimatorController[] potionAnimators = new RuntimeAnimatorController[5];
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +34,9 @@ public class puddle : MonoBehaviour
 
     public void SetType(int _type)
     {
-        type = (Type)_type; 
-        GetComponent<SpriteRenderer>().sprite = Textures[(int)type];
+        type = (Type)_type;
+
+        GetComponent<Animator>().runtimeAnimatorController = potionAnimators[(int)type];
         Debug.Log((int)type + "-" + type);
     }
 
