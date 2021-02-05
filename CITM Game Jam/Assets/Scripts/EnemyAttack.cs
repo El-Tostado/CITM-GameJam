@@ -14,9 +14,10 @@ public class EnemyAttack : MonoBehaviour
         }
         else
         {
-            // Apply damage to player here
-            timer = 0.0f;
-            Debug.Log("Hit Player");
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.GetComponent<PlayerMovement>().isDead = true;
+            }
         }
     }
 }

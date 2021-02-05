@@ -19,7 +19,7 @@ public class EnemyGraphics : MonoBehaviour
     public GameObject player;
 
     bool trapped = false;
-    bool healed = false;
+    public bool healed = false;
 
     public GameObject exlposionEffect;
     private void Start()
@@ -27,6 +27,8 @@ public class EnemyGraphics : MonoBehaviour
         animator = GetComponent<Animator>();
         attackColliderLeft.SetActive(false);
         attackColliderRight.SetActive(false);
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
