@@ -12150,26 +12150,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 508318631258364454, guid: fb89f5619593d9a4b93f0d19a1d4041a, type: 3}
-      propertyPath: pickNextWaypointDist
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 508318631258364455, guid: fb89f5619593d9a4b93f0d19a1d4041a, type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 508318631258364457, guid: fb89f5619593d9a4b93f0d19a1d4041a, type: 3}
       propertyPath: m_Name
       value: Enemy v2
       objectReference: {fileID: 0}
-    - target: {fileID: 508318632440930794, guid: fb89f5619593d9a4b93f0d19a1d4041a, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 508318632440930794, guid: fb89f5619593d9a4b93f0d19a1d4041a, type: 3}
-      propertyPath: exlposionEffect
-      value: 
-      objectReference: {fileID: 552821936630059267, guid: 14fc8fa786de10b449cd453153506f43, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb89f5619593d9a4b93f0d19a1d4041a, type: 3}
 --- !u!1001 &1828320348
