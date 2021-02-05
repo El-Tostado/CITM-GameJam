@@ -12,6 +12,10 @@ public class DestroyableProp : MonoBehaviour
         {
             GetComponent<Collider2D>().enabled = false;
             GetComponent<SpriteRenderer>().sprite = broken;
+            Bounds bounds = gameObject.GetComponent<BoxCollider2D>().bounds;
+            gameObject.layer = 0;
+            AstarPath.active.UpdateGraphs(bounds);
+            Destroy(gameObject);
         }
     }
 }
