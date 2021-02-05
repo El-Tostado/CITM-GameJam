@@ -7,6 +7,15 @@ public class preasureplate : MonoBehaviour
     public List<GameObject> Doors;
     bool active;
 
+    AudioSource audio;
+    public AudioClip ON;
+    public AudioClip OFF;
+
+    private void Start()
+    {
+        audio = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         if (active)
@@ -14,7 +23,12 @@ public class preasureplate : MonoBehaviour
             foreach(var door in Doors)
             {
                 if(door != null)
+                {
                     door.GetComponent<Door>().Open();
+                    Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
+                    gameObject.layer = 0;
+                    AstarPath.active.UpdateGraphs(bounds);
+                }
             }
         }
         else
@@ -22,7 +36,12 @@ public class preasureplate : MonoBehaviour
             foreach (var door in Doors)
             {
                 if (door != null)
+                {
                     door.GetComponent<Door>().Close();
+                    Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
+                    gameObject.layer = 12;
+                    AstarPath.active.UpdateGraphs(bounds);
+                }
             }
         }
     }
@@ -33,6 +52,8 @@ public class preasureplate : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("active", true); 
             active = true;
+            audio.clip = ON;
+            audio.Play();
         }
     }
 
@@ -42,6 +63,8 @@ public class preasureplate : MonoBehaviour
         {
             GetComponent<Animator>().SetBool("active", false);
             active = false;
+            audio.clip = OFF;
+            audio.Play();
         }
     }
 }

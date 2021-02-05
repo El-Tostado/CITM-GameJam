@@ -24,13 +24,22 @@ public class PotionMovement : MonoBehaviour
     public Sprite[] potionTextures = new Sprite[4];
     public GameObject puddle;
 
+    AudioSource audio;
+    public AudioClip throwB;
+    public AudioClip breakB;
+
+    bool breaked = false;
+
     private void Awake()
     {
         start = transform.position;
+        audio = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
+        audio.clip = throwB;
+        audio.Play();
         duration = (0.40f + (targetPos - transform.position).magnitude * 0.015f);
         time = 0f;
 
@@ -55,18 +64,30 @@ public class PotionMovement : MonoBehaviour
         }
         else
         {
-            //Spawn slime
-            if (type == PotionItem.Type.Green)
+            if (breaked )
             {
-                Instantiate(HealthExplosion, new Vector3(transform.position.x, transform.position.y, -10), Quaternion.identity);
+                if(!audio.isPlaying)
+                    Destroy(gameObject);
             }
             else
             {
-                GameObject go = Instantiate(puddle, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
-                go.GetComponent<puddle>().SetType((int)type);
+                //Spawn slime
+                if (type == PotionItem.Type.Green)
+                {
+                    Instantiate(HealthExplosion, new Vector3(transform.position.x, transform.position.y, -10), Quaternion.identity);
+                }
+                else
+                {
+                    GameObject go = Instantiate(puddle, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                    go.GetComponent<puddle>().SetType((int)type);
+                }
+                breaked = true;
+
+                audio.clip = breakB;
+                audio.Play();
             }
-            Destroy(gameObject);
         }
+
     }
     public void SetType(PotionItem.Type _type)
     {
