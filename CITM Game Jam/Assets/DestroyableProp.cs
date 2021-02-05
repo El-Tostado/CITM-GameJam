@@ -5,6 +5,16 @@ using UnityEngine;
 public class DestroyableProp : MonoBehaviour
 {
     public Sprite broken;
+    bool rescan = false;
+    public GameObject brokenTable;
+
+    private void Update()
+    {
+        //if (rescan)
+        //{
+        //    rescan = false;
+        //}
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -12,9 +22,9 @@ public class DestroyableProp : MonoBehaviour
         {
             GetComponent<Collider2D>().enabled = false;
             GetComponent<SpriteRenderer>().sprite = broken;
-            Bounds bounds = gameObject.GetComponent<BoxCollider2D>().bounds;
-            gameObject.layer = 0;
-            AstarPath.active.UpdateGraphs(bounds);
+            Instantiate(brokenTable, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            rescan = true;
         }
     }
 }
