@@ -82,7 +82,8 @@ public class RoomManager : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            startedLevel = false;
+            startedLevel = false; 
+            startedTimer = -500;
             NextLevel();
         }
     }

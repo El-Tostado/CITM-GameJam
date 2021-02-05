@@ -54,15 +54,17 @@ public class PlayerMovement : MonoBehaviour
         {
             PotionUI.enabled = false;
             PotionUI2.enabled = false;
+            direction = Vector2.zero;
+            audio.Stop();
             return;
         }
         else
         {
             PotionUI.enabled = true;
             PotionUI2.enabled = true;
+            processInputs();
         }
 
-        processInputs();
     }
 
     private void FixedUpdate()
