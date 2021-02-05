@@ -25,6 +25,8 @@ public class PlayerMovement : MonoBehaviour
     public int[] potions = new int[2];
     public int currentPotion = 0;
 
+    public bool isDead = false;
+
     // Start is called before the first frame update
     void Start()
     {
