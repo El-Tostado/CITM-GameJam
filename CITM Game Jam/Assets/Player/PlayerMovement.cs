@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public Sprite[] potionTextures = new Sprite[4];
     public Sprite empty;
     public Image PotionUI;
+    public Image PotionUI2;
 
     public int[] potions = new int[2];
     public int currentPotion = 0;
@@ -103,6 +104,16 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             PotionUI.color = Color.clear;
+        }
+
+        if (potions[(currentPotion + 1) % 2] != -1)
+        {
+            PotionUI2.overrideSprite = potionTextures[potions[(currentPotion + 1) % 2]];
+            PotionUI2.color = Color.white;
+        }
+        else
+        {
+            PotionUI2.color = Color.clear;
         }
     }
 

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3633805198704007284}
   - component: {fileID: -581805192404307143}
   - component: {fileID: 6783559231567942531}
+  - component: {fileID: -8582511059956011139}
   m_Layer: 9
   m_Name: Puddle
   m_TagString: Puddle
@@ -161,3 +162,28 @@ MonoBehaviour:
   - {fileID: 7760632299458796581, guid: 7465e9a0adece274f94ef26878400527, type: 3}
   - {fileID: 5873012219170116738, guid: c4038bec36caad747a123620d140524d, type: 3}
   - {fileID: -8923911374754931897, guid: 82bd7de61de615240bc6a7d426094b30, type: 3}
+  potionAnimators:
+  - {fileID: 9100000, guid: 2a613141a8af7bf4c9ddd78a1ba7c29c, type: 2}
+  - {fileID: 9100000, guid: afbcb0281c07c0246a9f5ef4b35ed91c, type: 2}
+  - {fileID: 9100000, guid: 00a60cd7b07400f49b43d091465e79a1, type: 2}
+  - {fileID: 9100000, guid: 30698744d9fa8e84991a78ce5abc34ba, type: 2}
+  - {fileID: 9100000, guid: 454a351c6b7626d4cacb2492c898d3c9, type: 2}
+--- !u!95 &-8582511059956011139
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553886820101242953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2a613141a8af7bf4c9ddd78a1ba7c29c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
