@@ -8,8 +8,8 @@ public class RoomManager : MonoBehaviour
     public GameObject NextLevelDoor;
     bool enemiesKilled = false;
 
-    public string currentlevel;
-    public string nextlevel;
+    public int currentlevel;
+    public int nextlevel;
     public PlayerMovement Player;
     public EnemyGraphics[] Enemies;
 
@@ -47,12 +47,12 @@ public class RoomManager : MonoBehaviour
 
     public void ResetScene()
     {
-        SceneManager.LoadScene(SceneManager.GetSceneByName(currentlevel).buildIndex);
+        SceneManager.LoadScene(currentlevel);
     }
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(SceneManager.GetSceneByName(nextlevel).buildIndex);
+        SceneManager.LoadScene(nextlevel);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
