@@ -11,10 +11,9 @@ GameObject:
   - component: {fileID: 5421497460105938550}
   - component: {fileID: 5421497460105938553}
   - component: {fileID: 5421497460105938552}
-  - component: {fileID: 5421497460105938555}
-  - component: {fileID: 5367116822263283805}
+  - component: {fileID: -3660530404571076928}
   m_Layer: 0
-  m_Name: BTableH
+  m_Name: BTableH 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 972bcab6ee9819b43b62c1aa68363b56, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1a2d4c158662def42b55b301ee46a742, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -111,28 +110,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.60603523, y: 0.20451689}
   m_EdgeRadius: 0
---- !u!50 &5421497460105938555
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5421497460105938554}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &5367116822263283805
+--- !u!114 &-3660530404571076928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,8 +119,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5421497460105938554}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 585b563bdbece70479286a5ce3afaa58, type: 3}
+  m_Script: {fileID: 11500000, guid: a229108535b7de14c8526b235f9be77c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  broken: {fileID: 21300000, guid: 1a2d4c158662def42b55b301ee46a742, type: 3}
-  brokenTable: {fileID: 5421497460105938554, guid: 4e5bb507056ff434194a6b7a8c9e68dc, type: 3}

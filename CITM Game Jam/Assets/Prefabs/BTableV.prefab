@@ -145,3 +145,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   broken: {fileID: 21300000, guid: 12e2a23e082db91489e3d5a23564ce8e, type: 3}
+  brokenTable: {fileID: 2179130489573465973, guid: bf40d29fadcc865469c1e2e8047f6868, type: 3}
