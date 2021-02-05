@@ -47,7 +47,11 @@ public class EnemyGraphics : MonoBehaviour
         if (healed) 
             return;
 
-        aiPath.canMove = roomManager.startedLevel;
+        if (!roomManager.startedLevel)
+            aiPath.canMove = false;
+
+        if (roomManager.startedLevel && !trapped)
+            aiPath.canMove = true;
 
         if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f &&
             aiPath.desiredVelocity.y <= 0.01f && aiPath.desiredVelocity.y >= -0.01f)
