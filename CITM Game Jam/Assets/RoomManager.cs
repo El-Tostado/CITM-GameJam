@@ -66,6 +66,11 @@ public class RoomManager : MonoBehaviour
         {
             ResetScene();
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ResetScene();
+        }
     }
 
     public void ResetScene()
