@@ -47,11 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 4382753248819640056}
   NextLevelDoor: {fileID: 0}
+  FirstLevelDoor: {fileID: 0}
   enemiesHealed: 0
   currentlevel: 4
   nextlevel: 5
   Player: {fileID: 0}
   Enemies: []
+  startedLevel: 0
 --- !u!61 &53293451
 BoxCollider2D:
   m_ObjectHideFlags: 0

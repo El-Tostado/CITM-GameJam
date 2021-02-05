@@ -31,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
 
     AudioSource audio;
     public AudioClip walk;
-    public AudioClip grab;
     public AudioClip die;
 
     RoomManager roomManager;
@@ -42,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < 2; ++i)
             potions[i] = -1;
 
-        PotionUI = GameObject.Find("PotionUI").GetComponent<Image>();
-        PotionUI2 = GameObject.Find("PotionUI2").GetComponent<Image>();
         roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
         audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
@@ -55,14 +52,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!roomManager.startedLevel)
         {
-            PotionUI.enabled = false;
-            PotionUI2.enabled = false;
+            PotionUI.gameObject.SetActive(false);
+            PotionUI2.gameObject.SetActive(false);
             return;
         }
         else
         {
-            PotionUI.enabled = true;
-            PotionUI2.enabled = true;
+            PotionUI.gameObject.SetActive(true);
+            PotionUI2.gameObject.SetActive(true);
         }
 
         processInputs();
