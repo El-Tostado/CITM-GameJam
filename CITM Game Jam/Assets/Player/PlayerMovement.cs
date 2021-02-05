@@ -31,6 +31,9 @@ public class PlayerMovement : MonoBehaviour
         Cursor.visible = false;
         for (int i = 0; i < 2; ++i)
             potions[i] = -1;
+
+        PotionUI = GameObject.Find("PotionUI").GetComponent<Image>();
+        PotionUI2 = GameObject.Find("PotionUI2").GetComponent<Image>();
     }
 
     // Update is called once per frame
