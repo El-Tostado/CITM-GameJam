@@ -152,6 +152,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   target: {fileID: 0}
   type: 0
+  HealthExplosion: {fileID: 630993540623097144, guid: a3aba38795e59c2479087edf25d8f368, type: 3}
   archeight: 3.92
   speed: 67.59
   duration: 0

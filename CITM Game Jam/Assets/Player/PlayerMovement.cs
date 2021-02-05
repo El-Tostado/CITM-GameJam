@@ -102,7 +102,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            PotionUI.color = Color.clear ;
+            PotionUI.color = Color.clear;
         }
     }
 

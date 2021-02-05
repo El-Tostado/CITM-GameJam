@@ -10,6 +10,7 @@ public class PotionMovement : MonoBehaviour
 
     private Vector3 start;
     private Coroutine coroutine;
+    public GameObject HealthExplosion;
 
     public float archeight = 3.0f;
     public float speed = 3;
@@ -56,8 +57,15 @@ public class PotionMovement : MonoBehaviour
         else
         {
             //Spawn slime
-            GameObject go = Instantiate(puddle, transform.position, Quaternion.Euler(0,0, Random.Range(0, 360)));
-            go.GetComponent<puddle>().SetType((int)type);
+            if (type == PotionItem.Type.Green)
+            {
+                Instantiate(HealthExplosion, new Vector3(transform.position.x, transform.position.y, -10), Quaternion.identity);
+            }
+            else
+            {
+                GameObject go = Instantiate(puddle, transform.position, Quaternion.Euler(0, 0, Random.Range(0, 360)));
+                go.GetComponent<puddle>().SetType((int)type);
+            }
             Destroy(gameObject);
         }
     }
