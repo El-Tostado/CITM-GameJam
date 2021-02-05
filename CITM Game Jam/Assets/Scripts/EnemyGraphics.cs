@@ -19,7 +19,7 @@ public class EnemyGraphics : MonoBehaviour
     public GameObject player;
 
     bool trapped = false;
-    bool healed = false;
+    public bool healed = false;
 
     public GameObject exlposionEffect;
     private void Start()
