@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
+    public Animator anim;
+
     public GameObject NextLevelDoor;
     bool enemiesKilled = false;
 
@@ -47,12 +49,12 @@ public class RoomManager : MonoBehaviour
 
     public void ResetScene()
     {
-        SceneManager.LoadScene(currentlevel);
+        StartCoroutine(Loadlevel(currentlevel));
     }
 
     public void NextLevel()
     {
-        SceneManager.LoadScene(nextlevel);
+        StartCoroutine(Loadlevel(nextlevel));
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -61,6 +63,15 @@ public class RoomManager : MonoBehaviour
         {
             NextLevel();
         }
+    }
+
+    IEnumerator Loadlevel(int level)
+    {
+        anim.SetBool("transitionEND", true);
+
+        yield return new WaitForSeconds(1);
+
+        SceneManager.LoadScene(level);
     }
 
 }
