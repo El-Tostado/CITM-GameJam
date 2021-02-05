@@ -82,7 +82,7 @@ public class PotionMovement : MonoBehaviour
                     go.GetComponent<puddle>().SetType((int)type);
                 }
                 breaked = true;
-
+                GetComponent<SpriteRenderer>().enabled = false;
                 audio.clip = breakB;
                 audio.Play();
             }
