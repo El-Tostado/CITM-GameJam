@@ -23,7 +23,12 @@ public class preasureplate : MonoBehaviour
             foreach(var door in Doors)
             {
                 if(door != null)
+                {
                     door.GetComponent<Door>().Open();
+                    Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
+                    gameObject.layer = 0;
+                    AstarPath.active.UpdateGraphs(bounds);
+                }
             }
         }
         else
@@ -31,7 +36,12 @@ public class preasureplate : MonoBehaviour
             foreach (var door in Doors)
             {
                 if (door != null)
+                {
                     door.GetComponent<Door>().Close();
+                    Bounds bounds = door.GetComponent<BoxCollider2D>().bounds;
+                    gameObject.layer = 12;
+                    AstarPath.active.UpdateGraphs(bounds);
+                }
             }
         }
     }
