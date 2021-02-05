@@ -34,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip grab;
     public AudioClip die;
 
+    RoomManager roomManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
         PotionUI = GameObject.Find("PotionUI").GetComponent<Image>();
         PotionUI2 = GameObject.Find("PotionUI2").GetComponent<Image>();
+        roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
         audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         audio.clip = walk;
@@ -51,6 +53,18 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!roomManager.startedLevel)
+        {
+            PotionUI.enabled = false;
+            PotionUI2.enabled = false;
+            return;
+        }
+        else
+        {
+            PotionUI.enabled = true;
+            PotionUI2.enabled = true;
+        }
+
         processInputs();
     }
 
