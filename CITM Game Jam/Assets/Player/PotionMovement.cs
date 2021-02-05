@@ -6,6 +6,8 @@ public class PotionMovement : MonoBehaviour
 {
     public AnimationCurve curve;
     public Transform target;
+    public Vector3 targetPos;
+    public Vector3 targetForward;
     public PotionItem.Type type;
 
     private Vector3 start;
@@ -29,13 +31,10 @@ public class PotionMovement : MonoBehaviour
 
     private void Start()
     {
-        if (target == null)
-            target = GameObject.Find("AimTarget").transform;
-
-        duration = (0.40f + (target.position - transform.position).magnitude * 0.015f);
+        duration = (0.40f + (targetPos - transform.position).magnitude * 0.015f);
         time = 0f;
 
-        end = target.position - (target.forward * 0.55f);
+        end = targetPos - (targetForward * 0.55f);
 
         GetComponent<SpriteRenderer>().sprite = potionTextures[(int)type];
     }
