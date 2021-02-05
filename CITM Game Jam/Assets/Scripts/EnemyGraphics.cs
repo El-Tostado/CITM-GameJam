@@ -27,25 +27,27 @@ public class EnemyGraphics : MonoBehaviour
 
     public GameObject exlposionEffect;
 
-    GameObject roomManager;
+    RoomManager roomManager;
     private void Start()
     {
         audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         attackColliderLeft.SetActive(false);
         attackColliderRight.SetActive(false);
+        roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
 
         player = GameObject.FindGameObjectWithTag("Player");
         audio.clip = zombie;
         audio.loop = true;
         audio.Play();
-
-        roomManager = GameObject.Find("RoomManager");
     }
 
     void Update()
     {
-        if (healed) return;
+        if (healed) 
+            return;
+
+        aiPath.canMove = roomManager.startedLevel;
 
         if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f &&
             aiPath.desiredVelocity.y <= 0.01f && aiPath.desiredVelocity.y >= -0.01f)

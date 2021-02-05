@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     public AudioClip walk;
     public AudioClip die;
 
+    RoomManager roomManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         for (int i = 0; i < 2; ++i)
             potions[i] = -1;
 
+        roomManager = GameObject.Find("RoomManager").GetComponent<RoomManager>();
         audio = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         audio.clip = walk;
@@ -48,6 +50,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!roomManager.startedLevel)
+        {
+            return;
+        }
 
         processInputs();
     }
