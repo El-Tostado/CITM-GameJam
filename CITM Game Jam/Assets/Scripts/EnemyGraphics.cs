@@ -39,7 +39,8 @@ public class EnemyGraphics : MonoBehaviour
     {
         if (healed) return;
 
-        if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f)
+        if (aiPath.desiredVelocity.x <= 0.01f && aiPath.desiredVelocity.x >= -0.01f &&
+            aiPath.desiredVelocity.y <= 0.01f && aiPath.desiredVelocity.y >= -0.01f)
             animator.SetBool("walking", false);
         else
         {
