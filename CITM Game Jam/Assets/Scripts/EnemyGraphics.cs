@@ -19,12 +19,16 @@ public class EnemyGraphics : MonoBehaviour
     public GameObject player;
 
     bool trapped = false;
-    bool healed = false;
+    public bool healed = false;
+
+    public GameObject exlposionEffect;
     private void Start()
     {
         animator = GetComponent<Animator>();
         attackColliderLeft.SetActive(false);
         attackColliderRight.SetActive(false);
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     void Update()
@@ -111,6 +115,7 @@ public class EnemyGraphics : MonoBehaviour
         {
             aiPath.canMove = false;
             aiPath.enabled = false;
+            GameObject.Instantiate(exlposionEffect, transform.position, Quaternion.identity); 
             animator.SetBool("healed", true);
             animator.SetBool("walking", false);
             animator.SetBool("attack", false);

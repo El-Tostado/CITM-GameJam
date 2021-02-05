@@ -25,12 +25,21 @@ public class PlayerMovement : MonoBehaviour
     public int[] potions = new int[2];
     public int currentPotion = 0;
 
+    public bool isDead = false;
+
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.visible = false;
         for (int i = 0; i < 2; ++i)
             potions[i] = -1;
+
+        PotionUI = GameObject.Find("PotionUI").GetComponent<Image>();
+        PotionUI2 = GameObject.Find("PotionUI2").GetComponent<Image>();
+
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -58,6 +67,14 @@ public class PlayerMovement : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().flipX = false;
         }
+        if (velX == 0 && velY == 0)
+        {
+            animator.SetBool("walking", false);
+        }
+        else
+        {
+            animator.SetBool("walking", true);
+        }
 
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         float posX = mousePos.x;
@@ -69,8 +86,9 @@ public class PlayerMovement : MonoBehaviour
         {
             InstancedTarget = Instantiate(potion1,transform.position, Quaternion.identity);
             InstancedTarget.GetComponent<PotionMovement>().SetType((PotionItem.Type)potions[currentPotion]);
-            Transform t = InstancedTarget.GetComponent<PotionMovement>().target;
-            t = CursorPrefab.transform;
+            PotionMovement t = InstancedTarget.GetComponent<PotionMovement>();
+            t.targetPos = CursorPrefab.transform.position;
+            t.targetForward = CursorPrefab.transform.forward;
 
             potions[currentPotion] = -1;
             currentPotion = (currentPotion + 1) % 2;
@@ -81,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (hits[i].collider.transform.gameObject.layer == 8)
                 {
-                    t.position = new Vector3(hits[i].point.x, hits[i].point.y, t.position.z);
+                    t.targetPos = new Vector3(hits[i].point.x, hits[i].point.y, t.targetPos.z);
                 }
             }
         }
@@ -124,20 +142,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetKey(KeyCode.E))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Item") && Input.GetKey(KeyCode.E))
         {
             bool exists = false;
-            foreach(int i in potions)
+            foreach (int i in potions)
             {
                 if (i == (int)collision.GetComponent<PotionItem>().type)
                     exists = true;
             }
 
-            if(!exists)
+            if (!exists)
             {
                 for (int i = 0; i < 2; ++i)
                 {
-                    if(potions[i] == -1)
+                    if (potions[i] == -1)
                     {
                         potions[i] = (int)collision.GetComponent<PotionItem>().type;
                         currentPotion = i;
@@ -145,7 +163,7 @@ public class PlayerMovement : MonoBehaviour
                         break;
                     }
                 }
-                if(exists)
+                if (exists)
                     Destroy(collision.gameObject);
             }
         }
