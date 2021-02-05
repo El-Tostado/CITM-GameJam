@@ -13,6 +13,7 @@ public class EnemyGraphics : MonoBehaviour
     bool facingRight = false;
 
     public float attackSpeed = 1.0f;
+    public float visionRange = 40f;
 
     private void Start()
     {
@@ -49,6 +50,11 @@ public class EnemyGraphics : MonoBehaviour
        
         else
             animator.SetBool("attack", false);
+
+        if (Vector2.Distance(transform.position, GetComponentInParent<AIDestinationSetter>().target.position) <= visionRange)
+            aiPath.enabled = true;
+        else
+            aiPath.enabled = false;
     }
 
     void Attack()
